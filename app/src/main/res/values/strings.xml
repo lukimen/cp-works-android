@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Cp Work</string>
+    <string name="title_home">Home</string>
+    <string name="title_pesannan">Pesanan</string>
+    <string name="title_account">Account</string>
+    <string name="desc">desc</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDTV1a6ebS08FaWumqmRIZ2YbZVcdD8JI4</string>
+    <string name="title_activity_pesan">Pesan</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <string name="title_activity_pesanan_saya">PesananSaya</string>
+    <string name="title_activity_mingguan">Mingguan</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+</resources>
