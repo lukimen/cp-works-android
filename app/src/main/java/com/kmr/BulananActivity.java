@@ -81,6 +81,10 @@ public class BulananActivity extends AppCompatActivity implements
 
     public void openLaporanActivity(){
         Intent intent = new Intent(getApplicationContext(), LaporanBulananActivity.class);
+        intent.putExtra("tahunAwal", spinBulananAwalTahun.getSelectedItem().toString());
+        intent.putExtra("bulanAwal", String.valueOf(spinBulananAwalBulan.getSelectedItemPosition()));
+        intent.putExtra("tahunAkhir", spinBulananAkhirTahun.getSelectedItem().toString());
+        intent.putExtra("bulanAkhir", String.valueOf(spinBulananAkhirBulan.getSelectedItemPosition()));
         startActivity(intent);
     }
 

@@ -1,4 +1,4 @@
-package com.kmr.ui.home;
+package com.kmr;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -10,9 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
-import com.kmr.CustomInfoWindowMapsActivity;
-import com.kmr.R;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

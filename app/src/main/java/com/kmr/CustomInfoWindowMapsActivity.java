@@ -45,6 +45,8 @@ public class CustomInfoWindowMapsActivity extends FragmentActivity implements On
 
     private Map<String, Place> placeMap = new HashMap<>();
 
+//    private APIInterface apiInterface;
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
@@ -54,7 +56,9 @@ public class CustomInfoWindowMapsActivity extends FragmentActivity implements On
         if (ActivityCompat.checkSelfPermission(
                 this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
         }
+
         mMap.setMyLocationEnabled(true);
 
         mapWrapperLayout = (MapWrapperLayout)findViewById(R.id.map_relative_layout);
@@ -138,6 +142,12 @@ public class CustomInfoWindowMapsActivity extends FragmentActivity implements On
                     .title(place.getTitle())
                     .position(latLng));
         }
+
+
+
+
+
+
 
     }
 

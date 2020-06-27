@@ -1,4 +1,4 @@
-package com.kmr.ui.account;
+package com.kmr;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

@@ -91,6 +91,10 @@ public class MingguanActivity extends AppCompatActivity implements
 
     public void openLaporanActivity(){
         Intent intent = new Intent(getApplicationContext(), LaporanMingguanActivity.class);
+        intent.putExtra("tahunAwal", spinMingguanAwalTahun.getSelectedItem().toString());
+        intent.putExtra("mingguAwal", String.valueOf(spinMingguanAwalMinggu.getSelectedItemPosition()));
+        intent.putExtra("tahunAkhir", spinMingguanAkhirTahun.getSelectedItem().toString());
+        intent.putExtra("mingguAkhir", String.valueOf(spinMingguanAkhirMinggu.getSelectedItemPosition()));
         startActivity(intent);
     }
 

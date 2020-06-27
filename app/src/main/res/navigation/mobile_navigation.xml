@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.kmr.ui.home.HomeFragment"
+        android:name="com.kmr.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_pesanan"
-        android:name="com.kmr.ui.pesanan.PesananFragment"
+        android:name="com.kmr.PesananFragment"
         android:label="@string/title_pesannan"
         tools:layout="@layout/fragment_pesanan" />
 
     <fragment
         android:id="@+id/navigation_account"
-        android:name="com.kmr.ui.account.AccountFragment"
+        android:name="com.kmr.AccountFragment"
         android:label="@string/title_account"
         tools:layout="@layout/fragment_account" />
 </navigation>

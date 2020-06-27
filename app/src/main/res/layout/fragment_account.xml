@@ -1,39 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:gravity="center_vertical" >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Selamat Datang User" />
+        android:layout_above="@id/txtUserEmail"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="10dp"
+        android:text="Selamat Datang"
+        android:textSize="40sp" />
 
     <TextView
-        android:id="@+id/textView9"
-        android:layout_width="match_parent"
+        android:id="@+id/txtUserEmail"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="email: user@email.com" />
+        android:layout_above="@id/tv_subtitle"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="10dp"
+        android:text="User email"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/tv_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="50dp"
+        android:layout_above="@id/btnAccountLoginLogout"/>
 
     <Button
-        android:id="@+id/btnAccountLogin"
+        android:id="@+id/btnAccountLoginLogout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="login" />
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@android:color/white"
+        android:layout_centerInParent="true"
+        android:text="login/Logout" />
 
     <Button
         android:id="@+id/btnAccountRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/btnAccountLoginLogout"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@android:color/white"
         android:text="register" />
 
-    <Button
-        android:id="@+id/btnAccountLogout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="logout" />
-</LinearLayout>
+</RelativeLayout>
+
+
+
+
+
