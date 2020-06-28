@@ -23,4 +23,7 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="cpworks_account">cpworks_account</string>
+    <string name="office">office</string>
+    <string name="meeting">meeting</string>
+    <string name="cowork">cowork</string>
 </resources>

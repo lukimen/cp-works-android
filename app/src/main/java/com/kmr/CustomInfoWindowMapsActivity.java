@@ -3,14 +3,17 @@ package com.kmr;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -20,13 +23,18 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.kmr.model.BaseResponse;
 import com.kmr.model.Place;
+import com.kmr.model.PlaceDao;
 
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
+import retrofit2.Response;
 
 
 public class CustomInfoWindowMapsActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -45,10 +53,14 @@ public class CustomInfoWindowMapsActivity extends FragmentActivity implements On
 
     private Map<String, Place> placeMap = new HashMap<>();
 
-//    private APIInterface apiInterface;
+    private String placeType;
+
+    private APIInterface apiInterface;
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
+        placeType = getIntent().getStringExtra("placeType");
 
         populatePlace();
         mMap = googleMap;
@@ -143,12 +155,6 @@ public class CustomInfoWindowMapsActivity extends FragmentActivity implements On
                     .position(latLng));
         }
 
-
-
-
-
-
-
     }
 
     @Override
@@ -169,7 +175,98 @@ public class CustomInfoWindowMapsActivity extends FragmentActivity implements On
         return (int)(dp * scale + 0.5f);
     }
 
+
+    private class IsiTempat extends AsyncTask<Context, String, String> {
+
+        @Override
+        protected String doInBackground(Context... contexts) {
+            publishProgress("Loading..."); // Calls onProgressUpdate()
+
+            try {
+
+                apiInterface = APIClient.getClient().create(APIInterface.class);
+                Response<BaseResponse<List<PlaceDao>>> result =
+                        apiInterface.getTempat(placeType)
+                                .execute();
+
+//                if (result.body().getData() == true){ // login sukses?
+//
+//                    SharedPreferences.Editor editor = sharedPref.edit();
+//
+//                    editor.putString(getString(R.string.cpworks_account), txtEmail.getText().toString());
+//                    editor.commit();
+//
+//                    //update ui
+//                    runOnUiThread(new Runnable() {
+//
+//                        @Override
+//                        public void run() {
+//                            Toast.makeText(getApplicationContext(),   "'Login Sukses", Toast.LENGTH_LONG).show();
+//                        }
+//                    });
+//
+//
+//                    runOnUiThread(new Runnable() {
+//
+//                        @Override
+//                        public void run() {
+//
+//                            String emailLogin = sharedPref.getString(getString(R.string.cpworks_account), null);
+//
+//                            Toast.makeText(getApplicationContext(),
+//                                    "emailLogin: " + emailLogin , Toast.LENGTH_LONG)
+//                                    .show();
+//                        }
+//                    });
+//
+//                    Thread.sleep(3000);
+//                    finish();
+//                } else {
+//                    //update ui
+//                    runOnUiThread(new Runnable() {
+//
+//                        @Override
+//                        public void run() {
+//                            Toast.makeText(getApplicationContext(),   "'Login Failed", Toast.LENGTH_LONG).show();
+//                        }
+//                    });
+//                }
+
+
+                System.out.println("result : " + result);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return "finish";
+        }
+
+        @Override
+        protected void onPostExecute(String result) {}
+
+        @Override
+        protected void onPreExecute() {}
+
+        @Override
+        protected void onProgressUpdate(String... text) {}
+    }
+
     private void populatePlace(){
+//        private void populatePlace(List<PlaceDao> placeDaoList){
+
+//        for (PlaceDao placeDao: placeDaoList) {
+//
+//            Place place = new Place();
+//            place1.setTitle("Menara Cawang");
+//            place1.setLat(-6.24737081);
+//            place1.setLon(106.87092874);
+//            place1.setAddress("Jl. Dewi Sartika No 2");
+//            place1.setAddress2("Jatinegara, Jakarta Timur");
+//            place1.setPrice("Rp 500.000/hr")
+//
+//        }
+
         Place place1 = new Place();
         place1.setTitle("Menara Cawang");
         place1.setLat(-6.24737081);
