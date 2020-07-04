@@ -3,13 +3,23 @@ package com.kmr;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Objects;
 
 import androidx.annotation.NonNull;
@@ -50,6 +60,17 @@ public class PesananFragment extends Fragment{
                 openOrderActivity();
             }
         });
+
+//        ImageView imgTes = (ImageView)root.findViewById(R.id.imgTest);
+
+//        imgTes.setImageResource(R.drawable.meeting120);
+
+//        imgTes.setImageDrawable(
+//                getImageDrawable("https://i.ibb.co/rfkQCzv/rtdx-office-120.png"));
+//        Picasso.get().load("https://i.ibb.co/rfkQCzv/rtdx-office-120.png")
+//                .into(imgTes);
+
+
         btnPesananMingguan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,6 +151,26 @@ public class PesananFragment extends Fragment{
     public void openBulananActivity(){
         Intent intent = new Intent(getActivity(), BulananActivity.class);
         startActivity(intent);
+    }
+
+    private Drawable getImageDrawable(String url) {
+        Drawable image = null;
+        URL imageUrl;
+
+        try {
+            // Create a Drawable by decoding a stream from a remote URL
+            imageUrl = new URL(url);
+            HttpURLConnection conn = (HttpURLConnection) imageUrl.openConnection();
+            conn.setDoInput(true);
+            conn.connect();
+            InputStream stream = conn.getInputStream();
+            Bitmap bitmap = BitmapFactory.decodeStream(stream);
+            image = new BitmapDrawable(getResources(), bitmap);
+        } catch (Exception e) {
+//            Log.e(TAG, "Decoding Bitmap stream failed");
+//            image = getResources().getDrawable(R.drawable.noquestion);
+        }
+        return image;
     }
 
 }

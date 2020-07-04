@@ -1,52 +1,81 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:gravity="center_vertical" >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imgPesan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/txtPesanPlaceName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="menara cawang"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/txtPesanAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="jl Gatot Subroto" />
+
+    <TextView
+        android:id="@+id/txtPesanAddress2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="kp melayu cililitan" />
+
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:id="@+id/txtPesanHarga"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="harga per jam 200" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pilih Tanggal Pemesanan" />
+
+    <EditText
+        android:id="@+id/tglPesan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Title"
-        android:textSize="18sp" />
+        android:ems="10"
+        android:hint="Pilih Tanggal" />
 
     <TextView
-        android:id="@+id/address"
+        android:id="@+id/textView13"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="Lama pemesanan : " />
+
+    <EditText
+        android:id="@+id/lamaPesan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number" />
 
     <TextView
-        android:id="@+id/price"
+        android:id="@+id/txtPesanTotalHarga"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tanggal Pesanan" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Lama Pesanan" />
+        android:text="Total Bayar" />
 
     <Button
-        android:id="@+id/btnZ"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnPesan"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Pesan Sekarang" />
 
