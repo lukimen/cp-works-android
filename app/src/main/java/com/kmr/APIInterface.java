@@ -44,11 +44,11 @@ interface APIInterface {
     @GET("order/pesan?")
     Call<BaseResponse<Boolean>> orderPesan(
             @Query("email") String email,
-            @Query("durasiSewa") String durasiSewa,
+            @Query("durasiSewa") int durasiSewa,
             @Query("placeId") String placeId,
             @Query("placeName") String placeName,
             @Query("tanggalAwalSewa") String tanggalAwalSewa,
-            @Query("totalBayar") String totalBayar);
+            @Query("totalBayar") double totalBayar);
 
     @GET("place/by-place-type?")
     Call<BaseResponse<List<PlaceDao>>> getTempat(@Query("placeType") String placeType);

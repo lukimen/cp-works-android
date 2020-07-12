@@ -1,6 +1,7 @@
 package com.kmr.model;
 
 public class Place {
+    private String id;
     private String title;
     private String address;
     private String address2;
@@ -8,6 +9,7 @@ public class Place {
     private double lon;
     private String price;
     private String image;
+    private String durasi;
 
     public String getTitle() {
         return title;
@@ -63,5 +65,21 @@ public class Place {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getDurasi() {
+        return durasi;
+    }
+
+    public void setDurasi(String durasi) {
+        this.durasi = durasi;
     }
 }

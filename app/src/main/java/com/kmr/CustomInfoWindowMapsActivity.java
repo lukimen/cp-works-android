@@ -127,7 +127,7 @@ public class CustomInfoWindowMapsActivity extends FragmentActivity implements On
             protected void onClickConfirmed(View v, Marker marker) {
                 // Here we can perform some action triggered after clicking the button
 //                Toast.makeText(CustomInfoWindowMapsActivity.this, marker.getTitle() + "'s button clicked!", Toast.LENGTH_SHORT).show();
-                openPesanActivity();
+                openPesanActivity(placeClicked);
             }
         };
         this.btnPesan.setOnTouchListener(infoButtonListener);
@@ -144,31 +144,17 @@ public class CustomInfoWindowMapsActivity extends FragmentActivity implements On
 
                 placeClicked = placeMap.get(marker.getTitle());
 
-//                IsiIcon isiIcon = new IsiIcon();
-//                isiIcon.execute(getApplicationContext());
-
                 Picasso.get().load(placeClicked.getImage())
                         .into(imageView);
-
-                // Setting up the infoWindow with current's marker info
-//                imageView.setImageResource(R.drawable.pancoranmas50);
-
-//                try {
-//                    System.out.println("ceeeeeeek: " + placeClicked.getImage());
-//
-//                    URL newurl = new URL(placeClicked.getImage());
-//                    Bitmap icon = BitmapFactory.decodeStream(newurl.openConnection().getInputStream());
-//                    imageView.setImageBitmap(icon);
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
 
                 title.setText(placeClicked.getTitle());
                 title.setTypeface(title.getTypeface(), Typeface.BOLD);
 
                 address.setText(placeClicked.getAddress());
                 address2.setText(placeClicked.getAddress2());
-                price.setText(placeClicked.getPrice());
+                price.setText("Harga: Rp. " +
+                        String.format("%,d", (Double.valueOf(placeClicked.getPrice())).intValue()) + "/" +
+                        placeClicked.getDurasi());
 
                 float sdf = distFrom(latUser, lonUser, placeClicked.getLat(), placeClicked.getLon());
 
@@ -183,22 +169,9 @@ public class CustomInfoWindowMapsActivity extends FragmentActivity implements On
             }
         });
 
-//        Toast.makeText(getApplicationContext(),   "placeMap : " + placeMap.size(), Toast.LENGTH_LONG).show();
-
-//        for (Map.Entry<String, Place> entry: placeMap.entrySet()){
-//            Place place = entry.getValue();
-//
-//            LatLng latLng = new LatLng(place.getLat(), place.getLon());
-//
-//            mMap.addMarker(new MarkerOptions()
-//                    .title(place.getTitle())
-//                    .position(latLng));
-//        }
-
         locationManager = (LocationManager) getSystemService(
                 Context.LOCATION_SERVICE);
 
-//        Location loc  = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         Location loc = getLastKnownLocation();
 
         if (Objects.nonNull(loc)) {
@@ -270,54 +243,6 @@ public class CustomInfoWindowMapsActivity extends FragmentActivity implements On
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
-
-    }
-
-    private class IsiIcon extends AsyncTask<Context, String, String> {
-
-        @Override
-        protected String doInBackground(Context... contexts) {
-            publishProgress("Loading..."); // Calls onProgressUpdate()
-
-//            try {
-//                    System.out.println("ceeeeeeek: " + placeClicked.getImage());
-//
-//                    URL newurl = new URL(placeClicked.getImage());
-//                    iconClicked = BitmapFactory.decodeStream(newurl.openConnection().getInputStream());
-//                drawableImg = getImageDrawable("https://i.ibb.co/rfkQCzv/rtdx-office-120.png");
-//
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-
-
-            //update ui
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-//                    imageView.setImageResource(getImageDrawable(""));
-//                    imageView.setImageBitmap(iconClicked);
-//                    imageView.setImageDrawable(drawableImg);
-                    System.out.println("click image: " + placeClicked.getImage());
-//                    Picasso.get().load(placeClicked.getImage())
-//                            .into(imageView);
-                }
-            });
-
-            return "finish";
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-        }
-
-        @Override
-        protected void onPreExecute() {
-        }
-
-        @Override
-        protected void onProgressUpdate(String... text) {
-        }
     }
 
     private class IsiTempat extends AsyncTask<Context, String, String> {
@@ -382,40 +307,31 @@ public class CustomInfoWindowMapsActivity extends FragmentActivity implements On
         for (PlaceDao placeDao : placeDaoList) {
 
             Place place = new Place();
+            place.setId(placeDao.getId());
             place.setTitle(placeDao.getName());
             place.setLat(placeDao.getLatitude());
             place.setLon(placeDao.getLongitude());
             place.setAddress(placeDao.getAddress());
             place.setAddress2(placeDao.getAddress2());
+            place.setDurasi(placeDao.getDurasi());
             place.setPrice(String.valueOf(placeDao.getPrice()));
             place.setImage(placeDao.getImage());
 
             placeMap.put(placeDao.getName(), place);
 
         }
-
-//        Place place1 = new Place();
-//        place1.setTitle("Menara Cawang");
-//        place1.setLat(-6.24737081);
-//        place1.setLon(106.87092874);
-//        place1.setAddress("Jl. Dewi Sartika No 2");
-//        place1.setAddress2("Jatinegara, Jakarta Timur");
-//        place1.setPrice("Rp 500.000/hr");
-//
-//        Place place2 = new Place();
-//        place2.setTitle("Pancoran Mas Office");
-//        place2.setLat(-6.24428225);
-//        place2.setLon(106.84113711);
-//        place2.setAddress("Jl. Pancoran Barat No 7");
-//        place2.setAddress2("Pancoran, Jakarta Selatan");
-//        place2.setPrice("Rp 750.000/hr");
-//
-//        placeMap.put(place1.getTitle(), place1);
-//        placeMap.put(place2.getTitle(), place2);
     }
 
-    public void openPesanActivity() {
+    public void openPesanActivity(Place place) {
+
         Intent intent = new Intent(getApplicationContext(), PesanActivity.class);
+        intent.putExtra("placeId", place.getId());
+        intent.putExtra("placeName", place.getTitle());
+        intent.putExtra("placeImage", place.getImage());
+        intent.putExtra("placeAddress", place.getAddress());
+        intent.putExtra("placeAddress2", place.getAddress2());
+        intent.putExtra("placeHarga", place.getPrice());
+        intent.putExtra("placeDurasi", place.getDurasi());
         startActivity(intent);
     }
 
@@ -460,24 +376,5 @@ public class CustomInfoWindowMapsActivity extends FragmentActivity implements On
         return bestLocation;
     }
 
-    private Drawable getImageDrawable(String url) {
-        Drawable image = null;
-        URL imageUrl;
-
-        try {
-            // Create a Drawable by decoding a stream from a remote URL
-            imageUrl = new URL(url);
-            HttpURLConnection conn = (HttpURLConnection) imageUrl.openConnection();
-            conn.setDoInput(true);
-            conn.connect();
-            InputStream stream = conn.getInputStream();
-            Bitmap bitmap = BitmapFactory.decodeStream(stream);
-            image = new BitmapDrawable(getResources(), bitmap);
-        } catch (Exception e) {
-//            Log.e(TAG, "Decoding Bitmap stream failed");
-//            image = getResources().getDrawable(R.drawable.noquestion);
-        }
-        return image;
-    }
 }
 

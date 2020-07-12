@@ -4,6 +4,12 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
+    <Button
+        android:id="@+id/btnLaporanBulananDownload"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Download Laporan Bulanan" />
+
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -35,5 +41,8 @@
         android:id="@+id/laporan_bulanan_list"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:dividerHeight="1dp" />
+        android:dividerHeight="1dp" >
+
+    </ListView>
+
 </LinearLayout>

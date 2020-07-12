@@ -4,6 +4,12 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
+    <Button
+        android:id="@+id/btnLaporanMingguanDownload"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Download Laporan Mingguan" />
+
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
