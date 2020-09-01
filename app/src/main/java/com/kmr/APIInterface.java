@@ -64,6 +64,7 @@ interface APIInterface {
             @Field("longitude") String longitude,
             @Field("name") String name,
             @Field("placeType") String placeType,
+            @Field("ukuran") String ukuran,
             @Field("price") String price);
 
 //    @FormUrlEncoded

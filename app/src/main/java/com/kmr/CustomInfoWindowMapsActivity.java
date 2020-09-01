@@ -64,6 +64,7 @@ public class CustomInfoWindowMapsActivity extends FragmentActivity implements On
     private TextView jarak;
     private TextView address;
     private TextView address2;
+    private TextView ukuran;
     private Button btnPesan;
     private ImageView imageView;
     private OnInfoWindowElemTouchListener infoButtonListener;
@@ -116,6 +117,7 @@ public class CustomInfoWindowMapsActivity extends FragmentActivity implements On
         this.jarak = (TextView) infoWindow.findViewById(R.id.jarak);
         this.address = (TextView) infoWindow.findViewById(R.id.address);
         this.address2 = (TextView) infoWindow.findViewById(R.id.address2);
+        this.ukuran = (TextView) infoWindow.findViewById(R.id.ukuran);
         this.btnPesan = (Button) infoWindow.findViewById(R.id.btnPesan);
 
         this.imageView = (ImageView) infoWindow.findViewById(R.id.imageView);
@@ -152,6 +154,7 @@ public class CustomInfoWindowMapsActivity extends FragmentActivity implements On
 
                 address.setText(placeClicked.getAddress());
                 address2.setText(placeClicked.getAddress2());
+                ukuran.setText(placeClicked.getUkuran());
                 price.setText("Harga: Rp. " +
                         String.format("%,d", (Double.valueOf(placeClicked.getPrice())).intValue()) + "/" +
                         placeClicked.getDurasi());
@@ -316,6 +319,7 @@ public class CustomInfoWindowMapsActivity extends FragmentActivity implements On
             place.setDurasi(placeDao.getDurasi());
             place.setPrice(String.valueOf(placeDao.getPrice()));
             place.setImage(placeDao.getImage());
+            place.setUkuran(placeDao.getUkuran());
 
             placeMap.put(placeDao.getName(), place);
 
@@ -332,6 +336,7 @@ public class CustomInfoWindowMapsActivity extends FragmentActivity implements On
         intent.putExtra("placeAddress2", place.getAddress2());
         intent.putExtra("placeHarga", place.getPrice());
         intent.putExtra("placeDurasi", place.getDurasi());
+        intent.putExtra("placeUkuran", place.getUkuran());
         startActivity(intent);
     }
 

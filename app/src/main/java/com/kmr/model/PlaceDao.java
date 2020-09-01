@@ -14,6 +14,7 @@ public class PlaceDao implements Serializable {
   private String address2;
   private String durasi;
   private String image;
+  private String ukuran;
   private int isDeleted;
 
   public String getId() {
@@ -102,5 +103,13 @@ public class PlaceDao implements Serializable {
 
   public void setIsDeleted(int isDeleted) {
     this.isDeleted = isDeleted;
+  }
+
+  public String getUkuran() {
+    return ukuran;
+  }
+
+  public void setUkuran(String ukuran) {
+    this.ukuran = ukuran;
   }
 }

@@ -44,6 +44,7 @@ public class PesanActivity extends AppCompatActivity {
     private TextView txtPesanPlaceName;
     private TextView txtPesanAddress;
     private TextView txtPesanAddress2;
+    private TextView txtPesanUkuran;
     private TextView txtPesanHarga;
     private TextView txtPesanTotalHarga;
 
@@ -58,6 +59,7 @@ public class PesanActivity extends AppCompatActivity {
     private String placeImage;
     private String placeAddress;
     private String placeAddress2;
+    private String placeUkuran;
     private String placeHarga;
     private String placeDurasi;
 
@@ -76,6 +78,7 @@ public class PesanActivity extends AppCompatActivity {
         placeAddress2 = getIntent().getStringExtra("placeAddress2");
         placeHarga = getIntent().getStringExtra("placeHarga");
         placeDurasi = getIntent().getStringExtra("placeDurasi");
+        placeUkuran = getIntent().getStringExtra("placeUkuran");
 
         //ambil email dr login
         sharedPref = getApplicationContext()
@@ -133,6 +136,7 @@ public class PesanActivity extends AppCompatActivity {
         txtPesanPlaceName.setText(placeName);
         txtPesanAddress.setText(placeAddress);
         txtPesanAddress2.setText(placeAddress2);
+        txtPesanUkuran.setText(placeUkuran);
         txtPesanHarga.setText(placeHarga);
         txtPesanHarga.setText("Harga: Rp. " +
                 String.format("%,d", (Double.valueOf(placeHarga)).intValue()) + "/" + placeDurasi);

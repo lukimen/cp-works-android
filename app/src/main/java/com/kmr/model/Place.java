@@ -10,6 +10,7 @@ public class Place {
     private String price;
     private String image;
     private String durasi;
+    private String ukuran;
 
     public String getTitle() {
         return title;
@@ -81,5 +82,13 @@ public class Place {
 
     public void setDurasi(String durasi) {
         this.durasi = durasi;
+    }
+
+    public String getUkuran() {
+        return ukuran;
+    }
+
+    public void setUkuran(String ukuran) {
+        this.ukuran = ukuran;
     }
 }
