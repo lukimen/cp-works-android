@@ -129,6 +129,7 @@ public class PesanActivity extends AppCompatActivity {
         txtPesanPlaceName = findViewById(R.id.txtPesanPlaceName);
         txtPesanAddress = findViewById(R.id.txtPesanAddress);
         txtPesanAddress2 = findViewById(R.id.txtPesanAddress2);
+        txtPesanUkuran = findViewById(R.id.txtPesanUkuran);
         txtPesanHarga = findViewById(R.id.txtPesanHarga);
         txtPesanTotalHarga = findViewById(R.id.txtPesanTotalHarga);
         lamaPesan = findViewById(R.id.lamaPesan);
