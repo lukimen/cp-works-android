@@ -154,7 +154,7 @@ public class CustomInfoWindowMapsActivity extends FragmentActivity implements On
 
                 address.setText(placeClicked.getAddress());
                 address2.setText(placeClicked.getAddress2());
-                ukuran.setText("ukuran: " + placeClicked.getUkuran());
+                ukuran.setText("spesifikasi: " + placeClicked.getUkuran());
                 price.setText("Harga: Rp. " +
                         String.format("%,d", (Double.valueOf(placeClicked.getPrice())).intValue()) + "/" +
                         placeClicked.getDurasi());

@@ -137,7 +137,7 @@ public class PesanActivity extends AppCompatActivity {
         txtPesanPlaceName.setText(placeName);
         txtPesanAddress.setText(placeAddress);
         txtPesanAddress2.setText(placeAddress2);
-        txtPesanUkuran.setText(placeUkuran);
+        txtPesanUkuran.setText("spesifikasi: " + placeUkuran);
         txtPesanHarga.setText(placeHarga);
         txtPesanHarga.setText("Harga: Rp. " +
                 String.format("%,d", (Double.valueOf(placeHarga)).intValue()) + "/" + placeDurasi);
